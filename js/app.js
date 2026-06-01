@@ -1,20 +1,20 @@
 /*
-* JS for the entry form data checkup
+ * JS for checking the entry form data 
+ * 
 */
 
-// Capture nick input value
-const nickInput = document.getElementById("nick");
-console.log(nickInput.nodeType);
-nickInput.value = "Paco";
-console.log(nickInput.value);
+// Initialization of var, objects, DOM
+const botonJugar = document.getElementById("jugar");
 
-// Capture select value
-const tamanoInput = document.getElementById("tamano");
-console.log(tamanoInput.value);
-console.log(tamanoInput.options[tamanoInput.selectedIndex].text);
-
-// Ejemplo sobre eventos
-function test() {
-    console.log("EVENTO SOBRE RATÓN");
-    
+// Event functions
+function comprobarForm() {
+    console.log("Comprobamos el formulario");
 }
+
+function ejecutarAccion() {
+    console.log("Ejecutar acción");
+    botonJugar.removeEventListener("click", ejecutarAccion);
+}
+
+botonJugar.addEventListener("click", comprobarForm);
+botonJugar.addEventListener("click", ejecutarAccion);
