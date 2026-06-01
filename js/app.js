@@ -12,3 +12,9 @@ console.log(nickInput.value);
 const tamanoInput = document.getElementById("tamano");
 console.log(tamanoInput.value);
 console.log(tamanoInput.options[tamanoInput.selectedIndex].text);
+
+// Ejemplo sobre eventos
+function test() {
+    console.log("EVENTO SOBRE RATÓN");
+    
+}
