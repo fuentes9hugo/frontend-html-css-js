@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de monedas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <h3>Conversor de euros a monedas</h3>
+            <form action="#">
+                <div class="itemblock">
+                    <div class="itemform">
+                        <input type="number" step="0.01" name="euros" id="euros" placeholder="Cantidad de euros" autofocus>
+                        <input type="text" name="euros" value="€" class="currency" readonly>
+                    </div>
+                    <input type="submit" value="CONVERTIR" id="convert">
+                </div>
+                <div class="itemblock">
+                    <div class="itemform">
+                        <input type="text" name="dollars" id="dollars">
+                        <input type="text" name="dollars" value="$" class="currency" readonly>
+                    </div>
+                    <div class="itemform">
+                        <input type="text" name="pounds" id="pounds">
+                        <input type="text" name="pounds" value="£" class="currency" readonly>
+                    </div>
+                    <div class="itemform">
+                        <input type="text" name="yen" id="yen">
+                        <input type="text" name="yen" value="¥" class="currency" readonly>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
