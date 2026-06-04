@@ -9,11 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/app.js" defer></script>
 </head>
 <body>
     <main>
         <div class="container">
             <h3>Conversor de euros a monedas</h3>
+            <div>
+                <p id="error"></p>
+            </div>
             <form action="#">
                 <div class="itemblock">
                     <div class="itemform">
@@ -24,15 +28,15 @@
                 </div>
                 <div class="itemblock">
                     <div class="itemform">
-                        <input type="text" name="dollars" id="dollars">
+                        <input type="text" name="dollars" id="dollars" readonly>
                         <input type="text" name="dollars" value="$" class="currency" readonly>
                     </div>
                     <div class="itemform">
-                        <input type="text" name="pounds" id="pounds">
+                        <input type="text" name="pounds" id="pounds" readonly>
                         <input type="text" name="pounds" value="£" class="currency" readonly>
                     </div>
                     <div class="itemform">
-                        <input type="text" name="yen" id="yen">
+                        <input type="text" name="yen" id="yen" readonly>
                         <input type="text" name="yen" value="¥" class="currency" readonly>
                     </div>
                 </div>
