@@ -27,6 +27,10 @@ input {
     width: 95%;
 }
 
+input:focus {
+    outline: none;
+}
+
 input[type="submit"] {
     width: 50%;
     border-radius: 5px;
