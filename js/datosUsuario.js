@@ -1,5 +1,7 @@
 /*
  * JS for the user's data management
+ * @author Hugo Fuentes <fuentes9hugo@gmail.com>
+ * @link https://github.com/fuentes9hugo/frontend-html-css-js GitHub
  */
 
 var nick;
@@ -7,6 +9,13 @@ var tamano;
 var email;
 var geolocalizacionTxt;
 
+/**
+ * Store data using sessionStorage
+ *
+ * @param {HTMLElement} nick user's nick
+ * @param {HTMLElement} tamano panel size
+ * @param {HTMLElement} email user's email
+ */
 function datosUsuario(nick, tamano, email) {
     sessionStorage.setItem("nick", nick.value);
     sessionStorage.setItem("tamano", tamano.value);
