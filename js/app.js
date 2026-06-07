@@ -11,6 +11,9 @@ var tamanoInput;
 var emailInput;
 var formEntrada;
 var error;
+var avatarItems;
+var itemImg;
+var avatarCont;
 
 // Event functions
 /**
@@ -38,7 +41,19 @@ function comprobarForm(event) {
     return true;
 }
 
-/** DOM Objects charge, checks and form events */
+function moviendoImg(event) {
+    itemImg = event.target;
+    console.log(itemImg.src);
+    
+}
+
+function cambiarImg() {
+    avatarCont.src = itemImg.src;
+}
+
+/*
+ * DOM Objects charge, checks and form events
+ */
 function domCargado() {
     // All Elements capture
     nickInput = document.getElementById("nick");
@@ -54,8 +69,17 @@ function domCargado() {
     }
 
     formEntrada.addEventListener("submit", comprobarForm);
-}
 
+    // Drag & Drop events
+    avatarItems = document.getElementsByClassName("avatarImgItem");
+    for (let item of avatarItems) {
+        item.addEventListener("dragstart", moviendoImg);
+    }
+
+    avatarCont = document.getElementById("avatarImg");
+    avatarCont.addEventListener("dragover", e => {e.preventDefault()});
+    avatarCont.addEventListener("drop", cambiarImg);
+}
 
 // Events charge start
 document.addEventListener("DOMContentLoaded", domCargado);
