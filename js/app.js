@@ -18,7 +18,7 @@ if(sessionStorage.getItem("error")) {
 // Event functions
 function comprobarForm(event) {
     // Check changes
-    if (nickInput.value.match(/(?<!\s)[0-9]/)) {
+    if (nickInput.value.match(/(?<!\S)[0-9]/)) {
         nickInput.focus();
         event.preventDefault();
         error.innerText = "El campo de nick no puede comenzar con un número";
@@ -31,6 +31,7 @@ function comprobarForm(event) {
     }
     // Correct information
     datosUsuario(nickInput);
+    historicoUsuarios(nickInput);
     return true;
 }
 
