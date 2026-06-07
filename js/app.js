@@ -6,6 +6,7 @@
 // Initialization of var, objects, DOM
 const nickInput = document.getElementById("nick");
 const tamanoInput = document.getElementById("tamano");
+const emailInput=document.getElementById("email");
 const formEntrada = document.getElementById("formEntrada");
 const error = document.getElementById("error");
 
@@ -30,10 +31,13 @@ function comprobarForm(event) {
         return false;
     }
     // Correct information
-    datosUsuario(nickInput);
+    datosUsuario(nickInput, tamanoInput, emailInput);
     historicoUsuarios(nickInput);
     return true;
 }
 
 // Events charge start
 formEntrada.addEventListener("submit", comprobarForm);
+
+// Geolocation
+datoGeolocalizacion();
