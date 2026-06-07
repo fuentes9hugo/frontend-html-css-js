@@ -23,6 +23,8 @@ function comprobarForm(event) {
         error.innerText = "Se debe seleccionar un tamaño de panel";
         return false;
     }
+    // Correct information
+    datosUsuario(nickInput);
     return true;
 }
 
