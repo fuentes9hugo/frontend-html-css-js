@@ -2,4 +2,8 @@
  * JS for Masterdot's game
  */
 
-mostrarDatosUsuario();
+// Capture User's Data
+getDatosUsuario();
+
+// Check data
+if (!comprobacionDatosUsuario()) location="index.html";

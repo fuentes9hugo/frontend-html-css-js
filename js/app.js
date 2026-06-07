@@ -9,6 +9,12 @@ const tamanoInput = document.getElementById("tamano");
 const formEntrada = document.getElementById("formEntrada");
 const error = document.getElementById("error");
 
+// Check any juego.html error
+if(sessionStorage.getItem("error")) {
+    error.innerText = sessionStorage.getItem("error");
+    sessionStorage.removeItem("error");
+}
+
 // Event functions
 function comprobarForm(event) {
     // Check changes
