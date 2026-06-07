@@ -1,5 +1,6 @@
 /*
  * JS for the user's data management
+ *
  * @author Hugo Fuentes <fuentes9hugo@gmail.com>
  * @link https://github.com/fuentes9hugo/frontend-html-css-js GitHub
  */

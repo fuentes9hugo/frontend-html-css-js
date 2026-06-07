@@ -1,22 +1,24 @@
 /*
  * JS for checking the entry form data 
- * 
-*/
+ *
+ * @author Hugo Fuentes <fuentes9hugo@gmail.com>
+ * @link https://github.com/fuentes9hugo/frontend-html-css-js GitHub
+ */
 
 // Initialization of var, objects, DOM
-const nickInput = document.getElementById("nick");
-const tamanoInput = document.getElementById("tamano");
-const emailInput=document.getElementById("email");
-const formEntrada = document.getElementById("formEntrada");
-const error = document.getElementById("error");
-
-// Check any juego.html error
-if(sessionStorage.getItem("error")) {
-    error.innerText = sessionStorage.getItem("error");
-    sessionStorage.removeItem("error");
-}
+var nickInput;
+var tamanoInput;
+var emailInput;
+var formEntrada;
+var error;
 
 // Event functions
+/**
+ * Check entry form correct data
+ *
+ * @param {EventObject} event event that jumps at execute submit
+ * @returns {boolean} 
+ */
 function comprobarForm(event) {
     // Check changes
     if (nickInput.value.match(/(?<!\S)[0-9]/)) {
@@ -36,8 +38,27 @@ function comprobarForm(event) {
     return true;
 }
 
+/** DOM Objects charge, checks and form events */
+function domCargado() {
+    // All Elements capture
+    nickInput = document.getElementById("nick");
+    tamanoInput = document.getElementById("tamano");
+    emailInput = document.getElementById("email");
+    formEntrada = document.getElementById("formEntrada");
+    error = document.getElementById("error");
+
+    // Check any juego.html error
+    if(sessionStorage.getItem("error")) {
+        error.innerText = sessionStorage.getItem("error");
+        sessionStorage.removeItem("error");
+    }
+
+    formEntrada.addEventListener("submit", comprobarForm);
+}
+
+
 // Events charge start
-formEntrada.addEventListener("submit", comprobarForm);
+document.addEventListener("DOMContentLoaded", domCargado);
 
 // Geolocation
 datoGeolocalizacion();
