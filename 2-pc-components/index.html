@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Componentes PC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/app.js" defer></script>
 </head>
@@ -14,13 +18,30 @@
                 <div class="components-type">
                     <h2>CPU</h2>
                     <div class="components">
-                        <div class="component">
-                            <img src="img/" alt="">
-                            <h3>AMD...</h3>
+                        <div class="component" draggable="true">
+                            <img src="img/amd-ryzen-7-9850x3d.png" alt="Procesador AMD Ryzen 7 9850X3D">
+                            <h3>AMD Ryzen 7 9850X3D</h3>
+                            <h4>Precio: <span class="price">520</span>€</h4>
                         </div>
-                        <div class="component">
-                            <img src="img/" alt="">
-                            <h3>AMD...</h3>
+                        <div class="component" draggable="true">
+                            <img src="img/intel-core-ultra-9-285k.png" alt="Procesador Intel Core Ultra 9 285K">
+                            <h3>Intel Core Ultra 9 285K</h3>
+                            <h4>Precio: <span class="price">600</span>€</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="components-type">
+                    <h2>GPU</h2>
+                    <div class="components">
+                        <div class="component" draggable="true">
+                            <img src="img/nvidia-geforce-rtx-5090.png" alt="Tarjeta gráfica NVIDIA GeForce RTX 5090">
+                            <h3>NVIDIA GeForce RTX 5090</h3>
+                            <h4>Precio: <span class="price">2369</span>€</h4>
+                        </div>
+                        <div class="component" draggable="true">
+                            <img src="img/amd-radeon-rx-9070-xt.png" alt="Tarjeta gráfica AMD Radeon RX 9070 XT">
+                            <h3>AMD Radeon RX 9070 XT</h3>
+                            <h4>Precio: <span class="price">720</span>€</h4>
                         </div>
                     </div>
                 </div>
@@ -29,7 +50,7 @@
                 <div id="cart">
 
                 </div>
-                <h2>Total: </h2>
+                <h1>Total: </h1>
             </section>
         </article>
     </main>

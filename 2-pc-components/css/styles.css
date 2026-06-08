@@ -1,5 +1,76 @@
+body {
+    font-family: 'B612',sans-serif;
+    background-color: #acc0c2;
+    margin-top: 40px;
+}
+
 article {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 80px;    
+    padding: 0 40px;
+}
+
+section {
+    width: calc(50% - 40px);
+}
+
+h1, h2, h3, h4, p {
+    color: white;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 400;
+    text-align: center;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/* Classes */
+.components {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.component {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.component img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 1px solid #111;
+    border-radius: 20px;
+    align-self: center;
+}
+
+.price {
+    color: #3d2645;
+}
+
+/* IDs */
+#cart {
+    width: calc(100% - 40px);
+    border: 1px solid #111;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+    aspect-ratio: 1;
+    background-color: #b5b5b5;
 }
