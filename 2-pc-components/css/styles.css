@@ -8,6 +8,7 @@ article {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
     gap: 80px;    
     padding: 0 40px;
 }
@@ -64,13 +65,18 @@ h3 {
     color: #3d2645;
 }
 
+#cart-section {
+    position: sticky;
+    top: 30px;
+}
+
 /* IDs */
 #cart {
     width: calc(100% - 40px);
+    min-height: 200px;
     border: 1px solid #111;
     border-radius: 20px;
     padding: 20px;
-    margin-bottom: 20px;
-    aspect-ratio: 1;
+    margin: 30px 0;
     background-color: #b5b5b5;
 }
