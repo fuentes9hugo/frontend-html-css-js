@@ -1,7 +1,11 @@
 // Initialization of var, objects, DOM
 var componentsImg;
+var componentImg;
+var parentImg;
 var cart;
+var total;
 
+// Move image to cart
 function moveImg(e) {
     e.dataTransfer.effectAllowed = "copy";
     e.dataTransfer.setData("text/plain", e.target.src);
@@ -10,8 +14,18 @@ function moveImg(e) {
     let halfHeight = e.target.clientHeight / 2;
     
     e.dataTransfer.setDragImage(e.target, halfWidth, halfHeight); 
+
+    componentImg = e.target;
+    parentImg = componentImg.parentElement.cloneNode(true);
+
+    console.log(componentImg.alt);
+}
+
+function addComponent() {
+    cart.append(parentImg);
+
     
-    console.log(e.target.alt);
+    total.innerText = +parentImg.querySelector(".price").innerText + +total.innerText
 }
 
 // DOM Objects charge, checks and form events
@@ -25,7 +39,10 @@ function chargedDom() {
 
     cart = document.getElementById("cart");
     cart.addEventListener("dragover", e => {e.preventDefault();});
-    cart.addEventListener("drop", () => {console.log("movido");});
+    cart.addEventListener("drop", addComponent);
+
+    // Total price element
+    total = document.getElementById("total");
 }
 
 // Events charge start
