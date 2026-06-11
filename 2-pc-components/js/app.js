@@ -3,6 +3,7 @@ var componentsImg;
 var componentImg;
 var parentImg;
 var cart;
+var cartComponents = [];
 var total;
 
 // Move image to cart
@@ -22,10 +23,19 @@ function moveImg(e) {
 }
 
 function addComponent() {
+    parentImg.style.width = "200px";
     cart.append(parentImg);
-
     
-    total.innerText = +parentImg.querySelector(".price").innerText + +total.innerText
+    // Add componentprice to total
+    total.innerText = +parentImg.querySelector(".price").innerText + +total.innerText;
+
+    // Remove cart component
+    parentImg.addEventListener("click", (e) => {
+        total.innerText = +total.innerText - +e.currentTarget.querySelector(".price").innerText; 
+        e.currentTarget.remove(); 
+    });
+    
+    cartComponents.push(parentImg);
 }
 
 // DOM Objects charge, checks and form events
