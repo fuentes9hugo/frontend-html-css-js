@@ -5,6 +5,7 @@ var parentImg;
 var cart;
 var cartComponents = [];
 var total;
+var form;
 
 // Move image to cart
 function moveImg(e) {
@@ -18,24 +19,39 @@ function moveImg(e) {
 
     componentImg = e.target;
     parentImg = componentImg.parentElement.cloneNode(true);
-
-    console.log(componentImg.alt);
 }
 
+// Add component to the 
 function addComponent() {
     parentImg.style.width = "200px";
     cart.append(parentImg);
+
+    let name = parentImg.querySelector("h3").innerText;
+    let price = parentImg.querySelector(".price").innerText;
     
     // Add componentprice to total
-    total.innerText = +parentImg.querySelector(".price").innerText + +total.innerText;
+    total.innerText = +price + +total.innerText;
 
     // Remove cart component
     parentImg.addEventListener("click", (e) => {
-        total.innerText = +total.innerText - +e.currentTarget.querySelector(".price").innerText; 
+        let currentPrice = e.currentTarget.querySelector(".price").innerText;
+        total.innerText = +total.innerText - +currentPrice; 
+        
+        // OPCIONAL: Eliminar también del array cartComponents si el usuario lo borra del carrito
+        let nameToRemove = e.currentTarget.querySelector("h3").innerText;
+        cartComponents = cartComponents.filter(item => item.name !== nameToRemove);
+
         e.currentTarget.remove(); 
     });
     
-    cartComponents.push(parentImg);
+    cartComponents.push({
+        name: name,
+        price: price
+    });
+}
+
+function getBill() {
+    cartData(cartComponents);
 }
 
 // DOM Objects charge, checks and form events
@@ -53,6 +69,10 @@ function chargedDom() {
 
     // Total price element
     total = document.getElementById("total");
+
+    // Bill
+    form = document.getElementById("form");
+    form.addEventListener("submit", getBill);
 }
 
 // Events charge start
