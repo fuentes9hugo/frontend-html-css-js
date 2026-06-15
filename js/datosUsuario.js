@@ -9,6 +9,7 @@ var nick;
 var tamano;
 var email;
 var geolocalizacionTxt;
+var avatarImg;
 
 /**
  * Store data using sessionStorage
@@ -17,17 +18,19 @@ var geolocalizacionTxt;
  * @param {HTMLElement} tamano panel size
  * @param {HTMLElement} email user's email
  */
-function datosUsuario(nick, tamano, email) {
+function datosUsuario(nick, tamano, email, avatarCont) {
     sessionStorage.setItem("nick", nick.value);
     sessionStorage.setItem("tamano", tamano.value);
     sessionStorage.setItem("email", email.value);
     sessionStorage.setItem("geolocalizacionTxt", geolocalizacionTxt);
+    sessionStorage.setItem("avatarImg", avatarCont.src);
 }
 
 function getDatosUsuario() {
     nick = sessionStorage.getItem("nick");
     tamano = sessionStorage.getItem("tamano");
     email = sessionStorage.getItem("email");
+    avatarImg = sessionStorage.getItem("avatarImg");
 }
 
 function comprobacionDatosUsuario() {
