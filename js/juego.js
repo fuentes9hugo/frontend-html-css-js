@@ -19,22 +19,45 @@ function pintarPanelJuego() {
 
     // Elements automatically
     let items = "";
-    let color = ["blue", "red"];
+    let color = ["azul", "rojo"];
     let colorRnd = 0;
     for (let index = 0; index < (parseInt(tamano) * parseInt(tamano)); index++) {
         if (index % 2 > 0) colorRnd = getRandomInt(2);
-        
+
         items += `<div class="containerItem"><div class="item ${color[colorRnd]}"></div></div>`
     }
     document.getElementById("juego").innerHTML = items;
+}
+
+// Add events to the game
+function programarEventosJuego() {
+    const items = document.getElementsByClassName("item");
+    for (let item of items) {
+        item.addEventListener("mousedown", comenzarMarcar);
+    }
+}
+
+// GAME FUNCTIONS
+/**
+ * Start game marking
+ *
+ * @param {*} event 
+ */
+function comenzarMarcar(event) {
+    let item = event.target;
+    let containerItem = item.parentElement
+    if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
+    else containerItem.classList.add("azul");
+    console.log("Pinchado sobre un circulo");
 }
 
 // Capture User's Data
 getDatosUsuario();
 
 // Check data
-if (!comprobacionDatosUsuario()) location="index.html";
+if (!comprobacionDatosUsuario()) location = "index.html";
 
 // Fill form
 rellenarFormularioUsuario();
 pintarPanelJuego();
+programarEventosJuego();
