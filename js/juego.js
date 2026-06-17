@@ -1,7 +1,10 @@
 /*
  * JS for Masterdot's game
  */
+// GLOBAL VARIABLES
+var iniciadoMarcado = false;
 
+// PANEL INICIALIZATION
 // Returns random number between 0 and max
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -34,23 +37,54 @@ function programarEventosJuego() {
     const items = document.getElementsByClassName("item");
     for (let item of items) {
         item.addEventListener("mousedown", comenzarMarcar);
+        item.addEventListener("mouseover", continuarMarcando);
     }
+    document.addEventListener("mouseup", finalizarMarcado);
 }
 
 // GAME FUNCTIONS
 /**
- * Start game marking
+ * Start dots marking
  *
  * @param {*} event 
  */
 function comenzarMarcar(event) {
     let item = event.target;
-    let containerItem = item.parentElement
+    let containerItem = item.parentElement;
     if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
     else containerItem.classList.add("azul");
+    if(!iniciadoMarcado) iniciadoMarcado = true;
     console.log("Pinchado sobre un circulo");
 }
 
+/**
+ * Continue dots marking
+ *
+ * @param {*} event 
+ */
+function continuarMarcando(event) {
+    if(iniciadoMarcado) {
+        let item = event.target;
+        let containerItem = item.parentElement;
+        if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
+        else containerItem.classList.add("azul");
+    }
+    console.log("Pasando sobre un circulo");
+}
+
+/**
+ * End dots marking
+ *
+ * @param {*} event 
+ */
+function finalizarMarcado(event) {
+    iniciadoMarcado = false;
+    console.log("Finalizar el marcado");
+}
+
+/*
+* MAIN
+*/
 // Capture User's Data
 getDatosUsuario();
 
