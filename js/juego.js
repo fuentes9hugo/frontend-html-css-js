@@ -4,6 +4,7 @@
 // GLOBAL VARIABLES
 var iniciadoMarcado = false;
 var adyacentes = [];
+var classMarcada;
 var tamanoPanel;
 
 // PANEL INICIALIZATION
@@ -82,9 +83,18 @@ function programarEventosJuego() {
 function comenzarMarcar(event) {
     let item = event.target;
     let containerItem = item.parentElement;
-    if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
-    else containerItem.classList.add("azul");
+    if(item.classList.contains("rojo")) {
+        classMarcada = "rojo";
+        containerItem.classList.add("rojo");
+    }
+    else {
+        classMarcada = "azul";
+        containerItem.classList.add("azul");
+    }
     if(!iniciadoMarcado) iniciadoMarcado = true;
+
+    // Start calulate adjacents
+    calcularAdyacentes(parseInt(item.id));
     console.log("Pinchado sobre un circulo");
 }
 
@@ -96,12 +106,15 @@ function comenzarMarcar(event) {
 function continuarMarcando(event) {
     if(iniciadoMarcado) {
         let item = event.target;
-        let containerItem = item.parentElement;
-        if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
-        else containerItem.classList.add("azul");
+        let idNuevo = parseInt(item.id);
+        // Is adjacent?
+        if(adyacentes.includes(idNuevo) && item.classList.contains(classMarcada)) {
+            let containerItem = item.parentElement;
+            if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
+            else containerItem.classList.add("azul");
+            calcularAdyacentes(parseInt(item.id));
 
-        // Test
-        calcularAdyacentes(parseInt(item.id));
+        }
     }
     console.log("Pasando sobre un circulo");
 }
