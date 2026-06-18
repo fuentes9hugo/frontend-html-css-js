@@ -3,6 +3,8 @@
  */
 // GLOBAL VARIABLES
 var iniciadoMarcado = false;
+var adyacentes = [];
+var tamanoPanel;
 
 // PANEL INICIALIZATION
 // Returns random number between 0 and max
@@ -14,8 +16,12 @@ function getRandomInt(max) {
 function rellenarFormularioUsuario() {
     document.getElementById("nick").value = nick;
     document.getElementById("avatarImg").src = avatarImg;
+    tamanoPanel = parseInt(tamano);
 }
 
+/*
+ * Function that fills nick and avatar and draws automatically the game's panel
+ */
 function pintarPanelJuego() {
     document.getElementById("juego").style.gridTemplateColumns = "repeat(" + tamano + ", 1fr)";
     document.getElementById("juego").style.gridTemplateRows = "repeat(" + tamano + ", 1fr)";
@@ -27,9 +33,34 @@ function pintarPanelJuego() {
     for (let index = 0; index < (parseInt(tamano) * parseInt(tamano)); index++) {
         if (index % 2 > 0) colorRnd = getRandomInt(2);
 
-        items += `<div class="containerItem"><div class="item ${color[colorRnd]}"></div></div>`
+        items += `<div class="containerItem"><div id="${index}" class="item ${color[colorRnd]}"></div></div>`
     }
     document.getElementById("juego").innerHTML = items;
+}
+
+/**
+ * Calculate the adjacents array
+ *
+ * @param {*} idMarcado marked number 
+ */
+function calcularAdyacentes(idMarcado) {
+    adyacentes = [];
+
+    // Superior adjacent
+    if((idMarcado - tamanoPanel) >= 0) adyacentes.push(idMarcado - tamanoPanel);
+
+    // Inferior adjacent
+    if((idMarcado + tamanoPanel) < tamanoPanel ** 2) adyacentes.push(idMarcado + tamanoPanel);
+
+    // Left adjacent
+    if((idMarcado % tamanoPanel) > 0) adyacentes.push(idMarcado - 1);
+
+    // Right adjacent
+    if(((idMarcado + 1) % tamanoPanel) > 0) adyacentes.push(idMarcado + 1);
+
+    for (let i = 0; i < adyacentes.length; i++) {
+        console.log(adyacentes[i]);
+    }
 }
 
 // Add events to the game
@@ -68,6 +99,9 @@ function continuarMarcando(event) {
         let containerItem = item.parentElement;
         if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
         else containerItem.classList.add("azul");
+
+        // Test
+        calcularAdyacentes(parseInt(item.id));
     }
     console.log("Pasando sobre un circulo");
 }
