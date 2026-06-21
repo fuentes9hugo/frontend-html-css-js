@@ -7,6 +7,7 @@ var adyacentes = [];
 var idMarcados = [];
 var classMarcada;
 var tamanoPanel;
+var idInterval;
 
 // PANEL INICIALIZATION
 // Returns random number between 0 and max
@@ -65,6 +66,22 @@ function calcularAdyacentes(idMarcado) {
     }
 }
 
+/** Game countdown */
+function cuentaAtras() {
+    let tiempoRestante = parseInt(document.getElementById("tmpo").value) - 1;
+    document.getElementById("tmpo").value = tiempoRestante;
+    if (tiempoRestante == 0) {
+        clearInterval(idInterval);
+        // End events
+        const items = document.getElementsByClassName("item");
+        for (let item of items) {
+            item.removeEventListener("mousedown", comenzarMarcar);
+            item.removeEventListener("mouseover", continuarMarcando);
+        }
+        document.removeEventListener("mouseup", finalizarMarcado);
+    }
+}
+
 // Add events to the game
 function programarEventosJuego() {
     const items = document.getElementsByClassName("item");
@@ -73,6 +90,9 @@ function programarEventosJuego() {
         item.addEventListener("mouseover", continuarMarcando);
     }
     document.addEventListener("mouseup", finalizarMarcado);
+
+    // Countdown
+    idInterval = setInterval(cuentaAtras, 1000);
 }
 
 // GAME FUNCTIONS
