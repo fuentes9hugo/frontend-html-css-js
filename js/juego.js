@@ -4,6 +4,7 @@
 // GLOBAL VARIABLES
 var iniciadoMarcado = false;
 var adyacentes = [];
+var idMarcados = [];
 var classMarcada;
 var tamanoPanel;
 
@@ -93,6 +94,8 @@ function comenzarMarcar(event) {
     }
     if(!iniciadoMarcado) iniciadoMarcado = true;
 
+    // Save markeds
+    idMarcados.push(parseInt(item.id));
     // Start calulate adjacents
     calcularAdyacentes(parseInt(item.id));
     console.log("Pinchado sobre un circulo");
@@ -112,6 +115,8 @@ function continuarMarcando(event) {
             let containerItem = item.parentElement;
             if(item.classList.contains("rojo")) containerItem.classList.add("rojo");
             else containerItem.classList.add("azul");
+            // Save markeds
+            idMarcados.push(parseInt(item.id));
             calcularAdyacentes(parseInt(item.id));
 
         }
@@ -126,6 +131,17 @@ function continuarMarcando(event) {
  */
 function finalizarMarcado(event) {
     iniciadoMarcado = false;
+    // Work with markeds
+    for (let index = 0; index < idMarcados.length; index++) {
+        // Capture object
+        let itemMarcado = document.getElementById(idMarcados[index]);
+        itemMarcado.parentElement.classList.remove(classMarcada);
+        // Change objects colors randomly
+        let color = ["rojo", "azul"];
+        let colorRnd = getRandomInt(2);
+        itemMarcado.classList.remove(classMarcada);
+        itemMarcado.classList.add(color[colorRnd]);
+    }
     console.log("Finalizar el marcado");
 }
 
