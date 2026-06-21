@@ -81,6 +81,7 @@ function cuentaAtras() {
         document.removeEventListener("mouseup", finalizarMarcado);
 
         // Change panels z-index
+        document.getElementById("juegoAcabado").classList.add("juegoAcabadoColor");
         document.getElementById("juegoAcabado").style.zIndex = "2";
         document.getElementById("juego").style.zIndex = "1";
         document.getElementById("nuevaPartida").addEventListener("click", e => location.reload());
