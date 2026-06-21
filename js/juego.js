@@ -131,6 +131,12 @@ function continuarMarcando(event) {
  */
 function finalizarMarcado(event) {
     iniciadoMarcado = false;
+    adyacentes = [];
+    // Add score
+    const puntuacionInput = document.getElementById("puntuacion");
+    if(idMarcados.length > 1) {
+        puntuacionInput.value = parseInt(puntuacionInput.value) + idMarcados.length;
+    }
     // Work with markeds
     for (let index = 0; index < idMarcados.length; index++) {
         // Capture object
@@ -142,6 +148,7 @@ function finalizarMarcado(event) {
         itemMarcado.classList.remove(classMarcada);
         itemMarcado.classList.add(color[colorRnd]);
     }
+    idMarcados = [];
     console.log("Finalizar el marcado");
 }
 
