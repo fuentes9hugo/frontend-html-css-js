@@ -1,3 +1,5 @@
+/* General styles */
+
 @font-face {
     font-family: "Saiyan Sans";
     src: url("../font/Saiyan-Sans.ttf") format("truetype");
@@ -27,6 +29,8 @@ main {
     padding-top: 250px;
     padding-bottom: 100px;
 }
+
+/* Form styles */
 
 .entry-form {
     display: flex;
