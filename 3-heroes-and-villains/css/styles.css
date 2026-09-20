@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "Saiyan Sans";
+    src: url("../font/Saiyan-Sans.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: "Saiyan Sans", sans-serif;
+    font-size: 22px;
+    color: #111;
+}
+
+h1{
+    font-size: 36px;
+    color: #111;
+}
+
+main {
+    display: flex;
+
+    justify-content: center;
+
+    height: 100vh;
+    padding-top: 250px;
+    
+    background-color: #d5d5d5;
+}
+
+.entry-form {
+    display: flex;
+
+    position: relative;
+    
+    justify-content: center;
+    
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    min-height: 500px;
+
+    padding: 180px 100px 100px 100px;
+    
+    background-color: #fff;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.form-head {
+    position: absolute;
+
+    top: -200px;
+    
+    width: 100%;
+    max-width: 75%;
+    aspect-ratio: 2616 / 1632;
+    
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.form-head > img {
+    width: 100%;
+    height: 100%;
+    
+    object-fit: cover;
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+
+
+    width: 100%;
+}
+
+.form-body > h1 {
+    text-align: center;
+}
+
+.form-body > form {
+    margin-top: 50px;
+}
+
+.item-form {
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+
+    margin-bottom: 24px;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-form label {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.item-form input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #111;
+    padding: 10px 0;
+    font-family: "Saiyan Sans", sans-serif;
+    font-size: 22px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.item-form input:focus {
+    border-bottom: 1px solid #444;
+}
+
+select {
+    font-family: "Saiyan Sans", sans-serif;
+    font-size: 22px;
+
+    background: transparent;
+    border-radius: 6px;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+}
+
+button[type="submit"] {
+    background-color: #111;
+    color: white;
+    font-family: 'Saiyan Sans', sans-serif;
+    font-size: 22px;
+    padding: 10px 40px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #444;
+}
