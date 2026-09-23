@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/styles.css">
     <script src="https://kit.fontawesome.com/cb00f18dc9.js" crossorigin="anonymous"></script>
+    <script src="js/app.js" defer></script>
 </head>
 <body>
     <main>
@@ -17,7 +18,10 @@
             </div>
             <div class="form-body">
                 <h1><span style="color: #ffd101;">HER<span style="color: #f68c1e;">O</span>ES</span> <span style="color: #ee1c25;">AND VILLAINS</span></h1>
-                <form action="game.html">
+                <form action="game.html" id="entry-form">
+                    <div class="item-form">
+                        <p id="error"></p>
+                    </div>
                     <div class="item-form">
                         <label for="nick"><i class="fa-solid fa-user"></i> Nick</label>
                         <input type="text" id="nick" name="nick" minlength="2" max="64" required>
@@ -57,7 +61,7 @@
                     </div>
 
                     <div class="submit-container">
-                        <button type="submit">PLAY</button>
+                        <button type="submit" id="play">PLAY</button>
                     </div>
                 </form>
             </div>
