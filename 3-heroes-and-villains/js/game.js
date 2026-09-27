@@ -9,24 +9,26 @@
 import { getUserData } from "./userData.js";
 
 
-
+let selectedCards = [];
+let isLocked = false;
 // Recieve user's data
 const { nick, difficulty, cardsNum, avatar } = getUserData();
 
 // Redirect to entry form if there is no nick name
-// if (nick == null) {
-    //     sessionStorage.setItem("error", "Form not filled out correctly");
-    //     location = "index.html";
-// }
+if (nick == null) {
+    sessionStorage.setItem("error", "Form not filled out correctly");
+    location = "index.html";
+}
 
 // Fill nick and avatar image and setting grid size
 document.getElementById("nick").value = nick;
 document.getElementById("avatar-img").src = avatar;
-document.getElementById("difficulty").value = difficulty;
+if (difficulty == "2"){ document.getElementById("difficulty").value = "TWO"; };
 const gridSize = parseInt(cardsNum);
-if (gridSize == 2){ document.getElementById("cards-num").value = "four" };
+if (gridSize == 2){ document.getElementById("cards-num").value = "four"; };
 
 drawGrid();
+gameEvents();
 
 // Returns random number between 0 and max
 function getRandomInt(max) {
@@ -56,7 +58,82 @@ function drawGrid() {
     do {
         finalItems.push(items.splice(getRandomInt(items.length), 1));
     
-    } while(items.length > 0);
+    } while (items.length > 0);
     
     document.getElementById("juego").innerHTML = finalItems.join("");
+}
+
+
+/** Add events to the game */
+function gameEvents() {
+    const cardContainers = document.getElementsByClassName("container-item");
+    for (let container of cardContainers) {
+        const card = container.firstChild;
+        card.addEventListener("click", imgClick);
+    }
+}
+
+
+/**
+ * Auxiliar function to sleep the code exution X seconds
+ *
+ * @param {*} ms 
+ * @returns {*} 
+ */
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * Events when click a card
+ *
+ * @param {*} event 
+ */
+async function imgClick(event) {
+    if (isLocked) { return; }
+    
+    const card = event.target;
+    selectedCards.push(card);
+
+    if (card.getAttribute("src") != "./img/cards/card.png" || card.parentElement.classList.contains("selected-card")) {
+        selectedCards.pop();
+        return;
+    }
+
+    if (selectedCards.length == 2) {
+        if (card == selectedCards[0]) {
+            selectedCards.pop();
+            return;
+        }
+
+        if (card.classList[0] != selectedCards[0].classList[0]) {
+            card.src = `./img/cards/` + card.className + `.png`;
+            card.parentElement.className += " selected-card";
+            isLocked = true;
+            await sleep(parseInt(difficulty) * 1000);
+            isLocked = false;
+
+            card.src = "./img/cards/card.png";
+            card.parentElement.className = card.parentElement.classList[0];
+            selectedCards[0].parentElement.className = selectedCards[0].parentElement.classList[0];
+            selectedCards[0].src = "./img/cards/card.png";
+            selectedCards = [];
+            return;
+        }
+
+    }
+
+    card.src = `./img/cards/` + card.className + `.png`;
+    card.parentElement.className += " selected-card";
+    
+    if (selectedCards.length == 2) {
+        selectedCards = [];
+
+        const cardContainers = document.getElementsByClassName("container-item");
+        
+        for (const container of cardContainers) {
+            if (!container.classList.contains("selected-card")) { return; }    
+        }
+
+        const endGame = document.getElementById("juego-acabado");
+        endGame.style.zIndex = "1000";
+    }
 }

@@ -56,12 +56,16 @@ img {
     min-width: 75px;
     min-height: 75px;
     border-radius: 5px;
+    height: 100%;
 }
 .item{
     border-radius: 45px;
     border: solid 10px #fff;
     width: 35px;
     height: 35px;
+}
+.selected-card{
+    background-color: #868686;
 }
 #avatar-img {
     float:left;
