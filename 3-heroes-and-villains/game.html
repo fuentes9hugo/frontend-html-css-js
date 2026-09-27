@@ -12,31 +12,31 @@
 </head>
 <body>
     <main>
-        <div id="contenedorJuego">
+        <div id="contenedor-juego">
             <div id="juego">
                 <!-- Draw game panel automatically -->
-                <!-- <div class="containerItem"><div class="item"></div></div> -->
+                <!-- <div class="container-item"><img class="" src="./img/cards/card.png"></div> -->
             </div>
-            <div id="juegoAcabado">
-                <button id="nuevaPartida">ANOTHER GAME</button>
+            <div id="juego-acabado">
+                <button id="nueva-partida">ANOTHER GAME</button>
             </div>
-            <div id="tituloJuego">
+            <div id="titulo-juego">
                 <p>Heroes and Villains</p>
             </div>
         </div>
-        <div id="contenedorUsuario">
-            <form id="form_entrada" action="juego.html">
+        <div id="contenedor-usuario">
+            <form id="form-entrada" action="game.html">
                 <div class="itemform">
-                    <img src="./img/avatars/trunks.png" width="26" id="avatarImg">
+                    <img src="./img/avatars/trunks.png" width="26" id="avatar-img">
                     <input type="text" id="nick" value="nick" readonly>
                 </div>
                 <div class="itemform">
-                    <label for="puntuacion"><i class="fa-solid fa-gauge"></i> difficulty</label>
-                    <input type="text" id="puntuacion" value="easy" class="inputJuego" readonly>
+                    <label for="difficulty"><i class="fa-solid fa-gauge"></i> difficulty</label>
+                    <input type="text" id="difficulty" value="hard" class="input-juego" readonly>
                 </div>
                 <div class="itemform">
-                    <label for="tmpo"><i class="fa-solid fa-hashtag"></i> number of cards</label>
-                    <input type="text" id="tmpo" value="four" class="inputJuego" readonly>
+                    <label for="cards-num"><i class="fa-solid fa-hashtag"></i> number of cards</label>
+                    <input type="text" id="cards-num" value="sixteen" class="input-juego" readonly>
                 </div>
             </form>
         </div>
