@@ -43,8 +43,8 @@ avatar.addEventListener("drop", () => { avatar.src = itemImg.src; });
 /**
  * Check entry form correct data
  *
- * @param {*} event 
- * @returns {boolean} 
+ * @param {*} event
+ * @returns {boolean}
  */
 function checkForm(event) {
     // Check changes

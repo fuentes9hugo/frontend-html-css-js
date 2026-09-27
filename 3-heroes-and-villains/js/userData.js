@@ -27,7 +27,7 @@ export function userData(nick, difficulty, cardsNum, avatar) {
  * Return user's data
  *
  * @export
- * @returns {{ nick: any; difficulty: any; cardsNum: any; avatar: any; }} 
+ * @returns {{ nick: any; difficulty: any; cardsNum: any; avatar: any; }}
  */
 export function getUserData() {
     return {
@@ -39,6 +39,13 @@ export function getUserData() {
 }
 
 
+
+/**
+ * Add user's data to history
+ *
+ * @export
+ * @param {*} nick
+ */
 export function userHistory(nick) {
     const historyStorage = localStorage.getItem("history");
     let history;
