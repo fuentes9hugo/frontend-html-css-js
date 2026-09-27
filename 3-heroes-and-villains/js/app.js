@@ -5,14 +5,33 @@
  * @link https://github.com/fuentes9hugo/frontend-html-css-js/tree/master/3-heroes-and-villains GitHub
  */
 
-// Initialization of var, objects, DOM
-var nickInput;
-var difficultyInput;
-var cardsNumInput;
-var entryForm;
-var error;
-var avatarItems;
-var avatar;
+// Elements capture
+const nickInput = document.getElementById("nick");
+const difficultyInput = document.getElementById("difficulty");
+const cardsNumInput = document.getElementById("cards-num");
+const entryForm = document.getElementById("entry-form");
+const error = document.getElementById("error");
+const avatarItems = document.getElementsByClassName("avatar-img-item");
+let itemImg;
+let avatar = document.getElementById("avatar-img");
+
+
+// Check any game.html error
+if(sessionStorage.getItem("error")) {
+    error.innerText = sessionStorage.getItem("error");
+    sessionStorage.removeItem("error");
+}
+
+entryForm.addEventListener("submit", checkForm);
+
+// Drag & Drop events
+for (let item of avatarItems) {
+    item.addEventListener("dragstart", e => { itemImg = e.target; });
+}
+
+avatar.addEventListener("dragover", e => { e.preventDefault(); });
+avatar.addEventListener("drop", () => { avatar.src = itemImg.src; });
+
 
 // Event functions
 
@@ -22,13 +41,6 @@ var avatar;
  * @param {*} event 
  * @returns {boolean} 
  */
-function checkForm(event) {
-    // Check changes
-
-    return false
-}
-
-
 function checkForm(event) {
     // Check changes
     if (nickInput.value.match(/(?<!\S)[0-9]/)) {
@@ -41,27 +53,3 @@ function checkForm(event) {
     // TODO: send correct information to userData.js
     return true
 }
-
-
-/** DOM Objects charge, checks and form events */
-function chargedDom() {
-    // All Elements capture
-    nickInput = document.getElementById("nick");
-    difficultyInput = document.getElementById("difficulty");
-    cardsNumInput = document.getElementById("cards-num");
-    entryForm = document.getElementById("entry-form");
-    error = document.getElementById("error");
-
-    // Check any juego.html error
-    if(sessionStorage.getItem("error")) {
-        error.innerText = sessionStorage.getItem("error");
-        sessionStorage.removeItem("error");
-    }
-
-    entryForm.addEventListener("submit", checkForm);
-
-    // TODO: Drag & Drop events
-}
-
-// Events charge start
-document.addEventListener("DOMContentLoaded", chargedDom);
