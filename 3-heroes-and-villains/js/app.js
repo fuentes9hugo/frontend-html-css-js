@@ -5,6 +5,11 @@
  * @link https://github.com/fuentes9hugo/frontend-html-css-js/tree/master/3-heroes-and-villains GitHub
  */
 
+
+// Imported functions
+import { userData, userHistory } from "./userData.js";
+
+
 // Elements capture
 const nickInput = document.getElementById("nick");
 const difficultyInput = document.getElementById("difficulty");
@@ -50,6 +55,9 @@ function checkForm(event) {
         return false;
     }
 
-    // TODO: send correct information to userData.js
+    // Send correct information
+    userData(nickInput, difficultyInput, cardsNumInput, avatar);
+    userHistory(nickInput);
+
     return true
 }
