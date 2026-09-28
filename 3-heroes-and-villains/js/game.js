@@ -9,6 +9,7 @@
 import { getUserData } from "./userData.js";
 
 
+// Game variables
 let selectedCards = [];
 let isLocked = false;
 // Recieve user's data
@@ -132,8 +133,11 @@ async function imgClick(event) {
         for (const container of cardContainers) {
             if (!container.classList.contains("selected-card")) { return; }    
         }
+        
+        // Bring the 'another game' button to the front
+        const endGame = document.getElementById("juego-acabado").style.zIndex = "1000";
 
-        const endGame = document.getElementById("juego-acabado");
-        endGame.style.zIndex = "1000";
+        // Set 'another game' button
+        document.getElementById("nueva-partida").addEventListener("click", () => { location.reload(); });
     }
 }
