@@ -24,9 +24,18 @@ if (nick == null) {
 // Fill nick and avatar image and setting grid size
 document.getElementById("nick").value = nick;
 document.getElementById("avatar-img").src = avatar;
-if (difficulty == "2"){ document.getElementById("difficulty").value = "TWO"; };
+if (difficulty == "2"){ document.getElementById("difficulty").value = "ONE"; };
 const gridSize = parseInt(cardsNum);
 if (gridSize == 2){ document.getElementById("cards-num").value = "four"; };
+const limit = document.getElementById("limit");
+if (difficulty == "2") {
+    limit.value = parseInt(cardsNum)**2 * 2;
+} else {
+    limit.value = parseInt(parseInt(cardsNum)**2 * 1.5);
+}
+
+// Set 'another game' button
+document.getElementById("nueva-partida").addEventListener("click", () => { location.reload(); });
 
 drawGrid();
 gameEvents();
@@ -108,8 +117,10 @@ async function imgClick(event) {
         if (card.classList[0] != selectedCards[0].classList[0]) {
             card.src = `./img/cards/` + card.className + `.png`;
             card.parentElement.className += " selected-card";
+            limit.value--;
+            if (limit.value <= 0) { document.getElementById("juego-acabado").style.zIndex = "1000"; }
             isLocked = true;
-            await sleep(parseInt(difficulty) * 1000);
+            await sleep(parseInt(difficulty) / 2 * 1000);
             isLocked = false;
 
             card.src = "./img/cards/card.png";
@@ -122,8 +133,12 @@ async function imgClick(event) {
 
     }
 
+    limit.value--;
+
     card.src = `./img/cards/` + card.className + `.png`;
     card.parentElement.className += " selected-card";
+
+    if (limit.value <= 0) { document.getElementById("juego-acabado").style.zIndex = "1000"; }
     
     if (selectedCards.length == 2) {
         selectedCards = [];
@@ -135,9 +150,6 @@ async function imgClick(event) {
         }
         
         // Bring the 'another game' button to the front
-        const endGame = document.getElementById("juego-acabado").style.zIndex = "1000";
-
-        // Set 'another game' button
-        document.getElementById("nueva-partida").addEventListener("click", () => { location.reload(); });
+        document.getElementById("juego-acabado").style.zIndex = "1000";
     }
 }
