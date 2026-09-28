@@ -6,7 +6,7 @@
  */
 
 
-import { getUserData } from "./userData.js";
+import { getUserData, checkUserData } from "./userData.js";
 
 
 // Game variables
@@ -15,11 +15,8 @@ let isLocked = false;
 // Recieve user's data
 const { nick, difficulty, cardsNum, avatar } = getUserData();
 
-// Redirect to entry form if there is no nick name
-if (nick == null) {
-    sessionStorage.setItem("error", "Form not filled out correctly");
-    location = "index.html";
-}
+// Redirect to entry form if user's data isn't correct
+if (!checkUserData()) location = "index.html";
 
 // Fill nick and avatar image and setting grid size
 document.getElementById("nick").value = nick;

@@ -38,7 +38,19 @@ export function getUserData() {
     };
 }
 
-
+/**
+ * Redirect to entry form if there is no nick name
+ *
+ * @export
+ * @returns {boolean} 
+ */
+export function checkUserData() {
+    if (sessionStorage.getItem("nick") == null) {
+        sessionStorage.setItem("error", "Form not filled out correctly");
+        return false;
+    }
+    return true;
+}
 
 /**
  * Add user's data to history
