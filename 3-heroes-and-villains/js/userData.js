@@ -16,10 +16,10 @@
  * @param {*} avatar 
  */
 export function userData(nick, difficulty, cardsNum, avatar) {
-    sessionStorage.setItem("nick", nick.value);
-    sessionStorage.setItem("difficulty", difficulty.value);
-    sessionStorage.setItem("cardsNum", cardsNum.value);
-    sessionStorage.setItem("avatar", avatar.src);
+    localStorage.setItem("nick", nick.value);
+    localStorage.setItem("difficulty", difficulty.value);
+    localStorage.setItem("cardsNum", cardsNum.value);
+    localStorage.setItem("avatar", avatar.src);
 }
 
 
@@ -31,10 +31,10 @@ export function userData(nick, difficulty, cardsNum, avatar) {
  */
 export function getUserData() {
     return {
-        nick: sessionStorage.getItem("nick"),
-        difficulty: sessionStorage.getItem("difficulty"),
-        cardsNum: sessionStorage.getItem("cardsNum"),
-        avatar: sessionStorage.getItem("avatar")
+        nick: localStorage.getItem("nick"),
+        difficulty: localStorage.getItem("difficulty"),
+        cardsNum: localStorage.getItem("cardsNum"),
+        avatar: localStorage.getItem("avatar")
     };
 }
 
@@ -45,8 +45,8 @@ export function getUserData() {
  * @returns {boolean} 
  */
 export function checkUserData() {
-    if (sessionStorage.getItem("nick") == null) {
-        sessionStorage.setItem("error", "Form not filled out correctly");
+    if (localStorage.getItem("nick") == null) {
+        localStorage.setItem("error", "Form not filled out correctly");
         return false;
     }
     return true;

@@ -12,6 +12,7 @@ import { getUserData, checkUserData } from "./userData.js";
 // Game variables
 let selectedCards = [];
 let isLocked = false;
+const score = document.getElementById("score");
 // Recieve user's data
 const { nick, difficulty, cardsNum, avatar } = getUserData();
 
@@ -21,14 +22,31 @@ if (!checkUserData()) location = "index.html";
 // Fill nick and avatar image and setting grid size
 document.getElementById("nick").value = nick;
 document.getElementById("avatar-img").src = avatar;
-if (difficulty == "2"){ document.getElementById("difficulty").value = "ONE"; };
+
+// Fill difficulty label
+if (difficulty == "2"){
+    document.getElementById("difficulty").value = "THREE QUARTERS";
+
+} else if (difficulty == "3") {
+    document.getElementById("difficulty").value = "ONE";
+}
+
+// Fill number of cards label
 const gridSize = parseInt(cardsNum);
-if (gridSize == 2){ document.getElementById("cards-num").value = "four"; };
+if (gridSize == 2) {
+    document.getElementById("cards-num").value = "four";
+} else if (gridSize == 3) {
+    document.getElementById("cards-num").value = "eight";
+}
+
+// Set limit of plays
 const limit = document.getElementById("limit");
-if (difficulty == "2") {
+if (difficulty == "3") {
     limit.value = parseInt(cardsNum)**2 * 2;
+} else if (difficulty == "2" ) {
+    limit.value = parseInt(parseInt(cardsNum)**2 * 1.85);
 } else {
-    limit.value = parseInt(parseInt(cardsNum)**2 * 1.5);
+    limit.value = parseInt(parseInt(cardsNum)**2 * 1.75);
 }
 
 // Set 'another game' button
@@ -44,8 +62,13 @@ function getRandomInt(max) {
 
 /** Draw game's grid and sets cards */
 function drawGrid() {
-    document.getElementById("juego").style.gridTemplateColumns = "repeat(" + gridSize + ", 1fr)";
-    document.getElementById("juego").style.gridTemplateRows = "repeat(" + gridSize + ", 1fr)";
+    // Adjust grid and num of cards if gridSize**2 not even
+    let adapter = 0;
+    if (gridSize % 2 != 0) adapter++; 
+
+    document.getElementById("juego").style.gridTemplateColumns = "repeat(" + (gridSize + adapter) + ", 1fr)";
+    document.getElementById("juego").style.gridTemplateRows = "repeat(" + (gridSize - adapter) + ", 1fr)";
+
     
     // Random cards
     let items = [];
@@ -55,7 +78,7 @@ function drawGrid() {
 
     // Choose random cards and their positions
     let randomCard;
-    for (let index = 0; index < (gridSize**2) / 2; index++) {
+    for (let index = 0; index < ((gridSize**2) - adapter) / 2; index++) {
         randomCard = cards.splice(getRandomInt(cards.length), 1);
         items.push(`<div class="container-item"><img class="`+ randomCard +`" src="./img/cards/card.png"></div>`);
         items.push(`<div class="container-item"><img class="`+ randomCard +`" src="./img/cards/card.png"></div>`);
@@ -138,12 +161,14 @@ async function imgClick(event) {
     if (limit.value <= 0) { document.getElementById("juego-acabado").style.zIndex = "1000"; }
     
     if (selectedCards.length == 2) {
+        score.value = +score.value + 100;
+        
         selectedCards = [];
 
         const cardContainers = document.getElementsByClassName("container-item");
         
         for (const container of cardContainers) {
-            if (!container.classList.contains("selected-card")) { return; }    
+            if (!container.classList.contains("selected-card")) return;   
         }
         
         // Bring the 'another game' button to the front

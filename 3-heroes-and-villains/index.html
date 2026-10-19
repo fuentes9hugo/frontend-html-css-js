@@ -14,7 +14,7 @@
     <main>
         <div class="entry-form">
             <div class="form-head">
-                <img src="./img/form.jpeg">
+                <img src="./img/form.jpeg" alt="Entry forrm image">
             </div>
             <div class="form-body">
                 <h1><span style="color: #ffd101;">HER<span style="color: #f68c1e;">O</span>ES</span> <span style="color: #ee1c25;">AND VILLAINS</span></h1>
@@ -24,37 +24,39 @@
                     </div>
                     <div class="item-form">
                         <label for="nick"><i class="fa-solid fa-user"></i> Nick</label>
-                        <input type="text" id="nick" name="nick" minlength="2" max="64" required>
+                        <input type="text" id="nick" name="nick" minlength="2" maxlength="64" required>
                     </div>
                     <div class="item-form">
                         <label for="difficulty"><i class="fa-solid fa-gauge"></i> Difficulty</label>
-                        <select id="difficulty" name="difficulty" required>
+                        <select id="difficulty" name="difficulty">
                             <option value="1">Hard</option>
-                            <option value="2">Easy</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Easy</option>
                         </select>
                     </div>
                     <div class="item-form">
                         <label for="cards-num"><i class="fa-solid fa-hashtag"></i> Number of cards</label>
-                        <select id="cards-num" name="cards-num" required>
+                        <select id="cards-num" name="cards-num">
                             <option value="4">Sixteen</option>
+                            <option value="3">Eight</option>
                             <option value="2">Four</option>
                         </select>
                     </div>
                     <div class="item-form">
-                        <label for="avatar"><i class="fa-solid fa-face-meh-blank"></i> Avatar</label>
+                        <label><i class="fa-solid fa-face-meh-blank"></i> Avatar</label>
                         <div id="avatar-section">
                             <div id="avatar">
-                                <img src="./img/avatars/trunks.png" id="avatar-img">
+                                <img src="./img/avatars/trunks.png" alt="Avatar image elected" id="avatar-img">
                             </div>
                             <div class="avatar-grid">
                                 <div class="avatar-item">
-                                    <img src="./img/avatars/trunks.png" class="avatar-img-item" draggable="true">
+                                    <img src="./img/avatars/trunks.png" alt="Trunks avatar" class="avatar-img-item" draggable="true">
                                 </div>
                                 <div class="avatar-item">
-                                    <img src="./img/avatars/android-18.png" class="avatar-img-item" draggable="true">
+                                    <img src="./img/avatars/android-18.png" alt="Android 18 avatar" class="avatar-img-item" draggable="true">
                                 </div>
                                 <div class="avatar-item">
-                                    <img src="./img/avatars/muten-roshi.png" class="avatar-img-item" draggable="true">
+                                    <img src="./img/avatars/muten-roshi.png" alt="Muten Roshi avatar" class="avatar-img-item" draggable="true">
                                 </div>
                             </div>
                         </div>

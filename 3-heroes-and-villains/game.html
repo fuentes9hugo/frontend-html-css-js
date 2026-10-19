@@ -7,7 +7,7 @@
     <link rel="icon" href="./img/logo.webp" type="image/webp">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/gameStyles.css">
-    <script src="https://kit.fontawesome.com/cb00f18dc9.js" crosszorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/cb00f18dc9.js" crossorigin="anonymous"></script>
     <script type="module" src="js/game.js"></script>
 </head>
 <body>
@@ -27,7 +27,7 @@
         <div id="contenedor-usuario">
             <form id="form-entrada" action="game.html">
                 <div class="itemform">
-                    <img src="./img/avatars/trunks.png" width="26" id="avatar-img">
+                    <img src="./img/avatars/trunks.png" alt="Avatar image" width="26" id="avatar-img">
                     <input type="text" id="nick" value="nick" readonly>
                 </div>
                 <div class="itemform">
@@ -41,6 +41,10 @@
                 <div class="itemform">
                     <label for="limit"><i class="fa-solid fa-arrows-up-to-line"></i> remaining coins</label>
                     <input type="text" id="limit" value="24" class="input-juego" readonly>
+                </div>
+                <div class="itemform">
+                    <label for="limit"><i class="fa-solid fa-ranking-star"></i> score</label>
+                    <input type="text" id="score" value="0" class="input-juego" readonly>
                 </div>
             </form>
         </div>
